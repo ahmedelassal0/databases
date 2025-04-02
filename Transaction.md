@@ -34,3 +34,8 @@ Is the process of persisting the rights clients make in the database to a non vo
 
 ### Durability - OS cache
 sometimes when the DBMS requests the OS to write changes into a file the OS write it to its cache to optimize performance -it is an OS thing not related to databases- and then the database deals as the changes committed to disk, this might cause data loss if a crash happened before OS write to the actual disk, to solve this problem there is a command called **Fsync** this makes sure the OS actually writes to disk not to its cache.
+
+# Eventual consistency
+Eventual consistency means that our database is not consistent **yet** but it would be consistent in future time, an example for that is when you have 3 database instances over 3 servers, and there is a change happened in one database on one server, but other database instances did not get that change so the data now is inconsistent across these database instances, but now or later the data will be consistent when the other instances listen to change that happened in the changed database instance.
+- **Once your data in two places you are inconsistent**
+- **Once you use cache you are inconsistent**
